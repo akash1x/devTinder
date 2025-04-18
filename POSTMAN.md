@@ -63,6 +63,43 @@ The collection uses a variable for the base URL which is set to `http://localhos
 - Description: Returns information about the currently authenticated user
 - Note: This is a protected route that requires authentication via cookie
 
+### Profile Management
+
+#### View Profile
+
+- Method: `GET`
+- URL: `{{baseUrl}}/api/profile/view`
+- Description: View the user's profile details
+- Note: This is a protected route that requires authentication via cookie
+
+#### Edit Profile
+
+- Method: `PATCH`
+- URL: `{{baseUrl}}/api/profile/edit`
+- Body (JSON):
+  ```json
+  {
+    "username": "newusername",
+    "email": "newemail@example.com"
+  }
+  ```
+- Description: Update user profile information
+- Note: This is a protected route that requires authentication via cookie
+
+#### Update Password
+
+- Method: `PATCH`
+- URL: `{{baseUrl}}/api/profile/password`
+- Body (JSON):
+  ```json
+  {
+    "currentPassword": "password123",
+    "newPassword": "newpassword123"
+  }
+  ```
+- Description: Change the user's password
+- Note: This is a protected route that requires authentication via cookie
+
 ## Cookie Authentication
 
 Postman automatically handles cookies from the server. After you login:
@@ -77,6 +114,8 @@ A typical testing flow:
 
 1. Register a new user (`POST /api/auth/register`)
 2. Login with the created user (`POST /api/auth/login`)
-3. Get the user profile (`GET /api/auth/me`)
-4. Logout (`POST /api/auth/logout`)
-5. Try to access the protected route again to verify you're logged out
+3. Get the user profile (`GET /api/auth/me` or `GET /api/profile/view`)
+4. Edit the user profile (`PATCH /api/profile/edit`)
+5. Update the user password (`PATCH /api/profile/password`)
+6. Logout (`POST /api/auth/logout`)
+7. Try to access a protected route to verify you're logged out

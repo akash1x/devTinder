@@ -8,6 +8,7 @@ const app = express();
 
 // Import routes
 const authRoutes = require('./routes/auth');
+const profileRoutes = require('./routes/profile');
 
 // Middleware
 app.use(express.json());
@@ -15,6 +16,7 @@ app.use(cookieParser());
 
 // Use routes
 app.use('/api/auth', authRoutes);
+app.use('/api/profile', profileRoutes);
 
 // Connect to MongoDB and start server
 const startServer = async () => {

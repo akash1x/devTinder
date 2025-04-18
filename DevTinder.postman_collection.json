@@ -85,6 +85,72 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Profile",
+      "description": "Profile management endpoints",
+      "item": [
+        {
+          "name": "View Profile",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/view",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile", "view"]
+            },
+            "description": "View the user's profile (protected route)"
+          },
+          "response": []
+        },
+        {
+          "name": "Edit Profile",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"username\": \"newusername\",\n    \"email\": \"newemail@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/edit",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile", "edit"]
+            },
+            "description": "Edit the user's profile information (protected route)"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Password",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"currentPassword\": \"password123\",\n    \"newPassword\": \"newpassword123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/profile/password",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "profile", "password"]
+            },
+            "description": "Update the user's password (protected route)"
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [

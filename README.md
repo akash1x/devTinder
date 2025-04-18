@@ -8,6 +8,7 @@ A developer matching platform where developers can connect with each other for c
 - MongoDB integration with Mongoose ODM
 - Secure password hashing with bcrypt
 - RESTful API for user management
+- Profile management features
 
 ## API Endpoints
 
@@ -17,6 +18,12 @@ A developer matching platform where developers can connect with each other for c
 - `POST /api/auth/login` - Login user
 - `POST /api/auth/logout` - Logout user
 - `GET /api/auth/me` - Get current user profile (protected route)
+
+### Profile Management
+
+- `GET /api/profile/view` - View user profile (protected route)
+- `PATCH /api/profile/edit` - Edit user profile information (protected route)
+- `PATCH /api/profile/password` - Update user password (protected route)
 
 ## Installation
 
@@ -47,7 +54,7 @@ By default, the server will run on port 7777.
 The following environment variables can be set:
 
 - `PORT` - Server port (default: 7777)
-- `MONGO_URI` - MongoDB connection string (default: mongodb://localhost:27017/devtinder)
+- `MONGO_URI` - MongoDB connection string (default: mongodb://localhost:27017/devTinderDB)
 - `JWT_SECRET` - Secret key for JWT token generation
 
 ## Technologies Used
