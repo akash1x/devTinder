@@ -12,10 +12,6 @@ module.exports = {
     },
 
     mongodb: {
-        uri: process.env.MONGO_URI || 'mongodb://localhost:27017/devtinder',
-        options: {
-            useNewUrlParser: true,
-            useUnifiedTopology: true
-        }
+        uri: process.env.MONGO_URI || 'mongodb://localhost:27017/devTinderDB',
     }
 }; 

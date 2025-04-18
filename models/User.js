@@ -21,16 +21,27 @@ const UserSchema = new mongoose.Schema({
             'Please provide a valid email'
         ]
     },
+    firstName: {
+        type: String,
+        trim: true,
+        minlength: [3, 'First name must be at least 3 characters long'],
+        maxlength: [30, 'First name must not exceed 30 characters']
+    },
+    lastName: {
+        type: String,
+        trim: true,
+        minlength: [3, 'Last name must be at least 3 characters long'],
+        maxlength: [30, 'Last name must not exceed 30 characters']
+    },
     password: {
         type: String,
         required: [true, 'Please provide a password'],
         minlength: [6, 'Password must be at least 6 characters long'],
         select: false // Don't return password by default
     },
-    createdAt: {
-        type: Date,
-        default: Date.now
-    }
+
+}, {
+    timestamps: true
 });
 
 // Hash password before saving
