@@ -9,6 +9,7 @@ A developer matching platform where developers can connect with each other for c
 - Secure password hashing with bcrypt
 - RESTful API for user management
 - Profile management features
+- Connection requests between developers
 
 ## API Endpoints
 
@@ -24,6 +25,14 @@ A developer matching platform where developers can connect with each other for c
 - `GET /api/profile/view` - View user profile (protected route)
 - `PATCH /api/profile/edit` - Edit user profile information (protected route)
 - `PATCH /api/profile/password` - Update user password (protected route)
+
+### Connection Requests
+
+- `POST /api/connections/request` - Send a connection request to another user (protected route)
+- `GET /api/connections/requests/received` - Get connection requests received by the user (protected route)
+- `GET /api/connections/requests/sent` - Get connection requests sent by the user (protected route)
+- `PATCH /api/connections/requests/:requestId` - Update connection request status (accept/reject/interested) (protected route)
+- `GET /api/connections` - Get all accepted connections (protected route)
 
 ## Installation
 

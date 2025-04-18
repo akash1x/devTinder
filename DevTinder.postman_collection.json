@@ -151,6 +151,107 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Connections",
+      "description": "Connection request management endpoints",
+      "item": [
+        {
+          "name": "Send Connection Request",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"toUserId\": \"60a1b2c3d4e5f6g7h8i9j0k1\",\n    \"message\": \"I'd like to connect with you for a project.\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/connections/request",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "connections", "request"]
+            },
+            "description": "Send a connection request to another user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Received Connection Requests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/connections/requests/received",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "connections", "requests", "received"]
+            },
+            "description": "Get all connection requests received by the current user"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Sent Connection Requests",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/connections/requests/sent",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "connections", "requests", "sent"]
+            },
+            "description": "Get all connection requests sent by the current user"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Connection Request Status",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"status\": \"accepted\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/connections/requests/:requestId",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "connections", "requests", ":requestId"],
+              "variable": [
+                {
+                  "key": "requestId",
+                  "value": "60a1b2c3d4e5f6g7h8i9j0k1",
+                  "description": "ID of the connection request"
+                }
+              ]
+            },
+            "description": "Update the status of a connection request (accept, reject, or mark as interested)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Connections",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/connections",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "connections"]
+            },
+            "description": "Get all accepted connections for the current user"
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "event": [

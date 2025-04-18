@@ -100,6 +100,56 @@ The collection uses a variable for the base URL which is set to `http://localhos
 - Description: Change the user's password
 - Note: This is a protected route that requires authentication via cookie
 
+### Connection Requests
+
+#### Send Connection Request
+
+- Method: `POST`
+- URL: `{{baseUrl}}/api/connections/request`
+- Body (JSON):
+  ```json
+  {
+    "toUserId": "60a1b2c3d4e5f6g7h8i9j0k1",
+    "message": "I'd like to connect with you for a project."
+  }
+  ```
+- Description: Send a connection request to another user
+- Note: This is a protected route that requires authentication via cookie
+
+#### Get Received Connection Requests
+
+- Method: `GET`
+- URL: `{{baseUrl}}/api/connections/requests/received`
+- Description: Get all connection requests received by the current user
+- Note: This is a protected route that requires authentication via cookie
+
+#### Get Sent Connection Requests
+
+- Method: `GET`
+- URL: `{{baseUrl}}/api/connections/requests/sent`
+- Description: Get all connection requests sent by the current user
+- Note: This is a protected route that requires authentication via cookie
+
+#### Update Connection Request Status
+
+- Method: `PATCH`
+- URL: `{{baseUrl}}/api/connections/requests/:requestId`
+- Body (JSON):
+  ```json
+  {
+    "status": "accepted" // Can be: "pending", "accepted", "rejected", "interested"
+  }
+  ```
+- Description: Update the status of a connection request (accept, reject, or mark as interested)
+- Note: This is a protected route that requires authentication via cookie and can only be done by the request recipient
+
+#### Get All Connections
+
+- Method: `GET`
+- URL: `{{baseUrl}}/api/connections`
+- Description: Get all accepted connections for the current user
+- Note: This is a protected route that requires authentication via cookie
+
 ## Cookie Authentication
 
 Postman automatically handles cookies from the server. After you login:
@@ -117,5 +167,9 @@ A typical testing flow:
 3. Get the user profile (`GET /api/auth/me` or `GET /api/profile/view`)
 4. Edit the user profile (`PATCH /api/profile/edit`)
 5. Update the user password (`PATCH /api/profile/password`)
-6. Logout (`POST /api/auth/logout`)
-7. Try to access a protected route to verify you're logged out
+6. Send connection requests to other users (`POST /api/connections/request`)
+7. View received connection requests (`GET /api/connections/requests/received`)
+8. Accept or reject connection requests (`PATCH /api/connections/requests/:requestId`)
+9. View established connections (`GET /api/connections`)
+10. Logout (`POST /api/auth/logout`)
+11. Try to access a protected route to verify you're logged out
